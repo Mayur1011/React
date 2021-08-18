@@ -1,0 +1,131 @@
+It is a client side JS library.
+It creates a VIRTUAL DOM in memory.
+Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, before making the changes in the browser DOM.
+React only changes what needs to be changed.
+It is all about building modern reactive user interfaces for the web.
+Declarative, component-focused approach.
+
+React can be used to control parts of HTML pages or entire pages.
+'Widget' approach on a multi-page-application.
+Some pages are still rendered on and served by a backend server.
+Here some part of the page in controlled by react.
+
+React can also used to control the entire frontend of a web application.
+Single page application (SPA) approach.
+Server only sends one HTML page. therafter, React takes over and control the UI.
+
+Elements are the smallest building block of React apps.
+An element describes what you want to see on the screen.
+In '<div id="root"></div>', the root here is called DOM Node because everything inside it will be managed by React DOM.
+Therefore we render a React element into a root DOM Node.
+React elements are immutable. i.e. once you create an element you cant change it children or attributes.
+But we can update the UI is to create a new element
+
+
+React Componenets are made of element(s).
+React is all about components.
+We build these individual components and then we tell react how to compose them together into a final user interface.
+Classes or functions are used for creating components in React.
+Componenets gives features like reuseability and seperation of concerns.
+
+Mostly react is all about combining HTML and JAVASCRIPT together and then we can also add css but that's not the focus of React.
+React uses declarative approach which defines the desired target state(s) and let react figure out the actual Javascript DOM instructions.
+And then react figures out which element should be update, delete or displyed on the webpage.
+
+JSX - JavaScript XML
+It converts HTML tags into react elements. 
+In react we must have one root element per return statement / per JSX statement. We cannot use two <div></div> inside one return statement.
+But we can create a div inside a div. i.e. there must be only one main div and inside this main div we can mave multiple divs.
+We can store JSX content in variables.
+After compilation, JSX expressions becomes regular JavaScript function calls.
+
+A component cannot use data stored in other components.
+Props in react are simple properties that we can use for outter components, just the same as we use in HTML components.
+A parent compenent owns the prop and cannot be changed by the child component.
+We can use props to share the data between two or more compenents.
+
+we have a distinct props object for every component and for every instance of some component.       
+
+The process of building an user interface from smaller building blocks is called composition in React.
+Composition are generally used as "Wrapper components" that add certain styling around the wrapped components.
+We cannot use our custom components as wrappers around other kind of content.
+having content inside a custom component does not work as same as default html tags.
+
+So to build such wrappers components we use children props
+props.children contains all the content which is specified between the opening tag and closing tag of our custom components.
+
+
+States and lisiting to user events helps us to change the content/interact with the page.
+State in React -
+States in the component changes over time. The changes in the state happens over time which can be done by a user or can be a system event.
+A state represents the component's local state or information. We can only modify the state inside that compenent
+
+
+
+useState() - It registers the state for a specified component instance.
+i.e. If we have used the component(function) for multiple times, then for each of them this useState function will create a seperate state.
+Hence when each of the components is called it creates a different states for each of them.
+That is the reason why after updating one component the others are not affected because each one has seperate state.
+REACT SCHEDULES STATE UPDATES, IT DOESNT PERFORMS THEM INSTANTLY.
+Using state we can implement 2 way binding which means that for inputs we just dont listen to changes but also pass a new value back to the input. So we can reset or change the values
+We are passing date from child compenent to parent component by passing this data to the function we got from parent class. This is called lifting up of state/data.
+
+
+
+
+
+
+
+
+
+
+
+MOVING DATA FROM CHILD COMPONENT TO PARENT COMPONENT --> 
+We can do this by using props and get a function from parent compenent into child component and then passing the date into that component.
+
+
+Working with FRAGMENTS, PORTALS, REFS
+LIMITATION OF JSX :-->
+1. We cannot render 2 JSX elements next to each other. i.e. we cannot return more than one root JSX elements from the return statement.
+
+To avoid using multiple divs / creating div soup we use fragments. 
+FRAGMENTS allows us to write neat and clean code.
+
+
+
+You must add all "things" you use in your effect function if those "things" could change because your component (or some parent component) re-rendered.
+userEffect runs after completion of every components rendering cycle, IF WE DONT PASS THE SECOND ARGUMENT WHICH IS AN ARRAY.
+But if you pass the second argument as an array then the effect function will run for the first time, but not for the subsequent render cycle.
+And if you pass any dependencies in the array then this effect function will run whenever the dependencies is present or valid.
+
+
+
+
+
+
+
+React hooks can be recongnized by the fact that they start with the word hooks.
+And all these hooks must be only called inside of react components.
+They can't be called outside of component functions and they also should't called inside a nested functions.
+Basic hooks :--
+ 1. useState()
+ 2. useEffect()
+ 3. useReducer() : Replacement to useState(). For more complex and powerful state management
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!#####################################!SOME GOOD RESOURCES!#################################!
+useState vs useref :- https://www.codebeast.dev/usestate-vs-useref-re-render-or-not/#what-causes-re-rendering
