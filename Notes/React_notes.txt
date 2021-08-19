@@ -104,7 +104,8 @@ And if you pass any dependencies in the array then this effect function will run
 
 
 
-React hooks can be recongnized by the fact that they start with the word hooks.
+React hooks can be recongnized by the fact that they start with the word 'use'.
+**React hooks can only be used with functional components. We cannot use them with class components.**
 And all these hooks must be only called inside of react components.
 They can't be called outside of component functions and they also should't called inside a nested functions.
 Basic hooks :--
