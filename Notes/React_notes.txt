@@ -60,24 +60,40 @@ State in React -
 States in the component changes over time. The changes in the state happens over time which can be done by a user or can be a system event.
 A state represents the component's local state or information. We can only modify the state inside that compenent
 
+useState() -->
+Syntax :- const[current_state, stateUpdateFunction] = useState(default_value);
+We pass useState() a default value to useState() as a parameter.
+Now, there are two ways through which we can pass our default value to useState.
+1. Directly hardcoded values
+   Eg. useState(4)
+   If we pass the value in this way, At every re-render the useState will be passed the same hardcoded value as the default value.
+2. passing a function
+   Eg. useState(() => {here we can pass the default value/function})
+   If we pass the default value in this way, the useState will be passed the default value only once i.e. at the very first time when the component is rendered.
+And it returns a array with 2 values [state(currentstate), function_which_allows_us_to_update_the_state].
+The function which is returned by useState() is used to update the state. This function takes a kindof callback function as an parameter.
+And the callback function present in the update function returned by useState() contains previous state as an parameter by which we can 
+update the current state. Remember that we can also directly update the current state without taking/using the previous state but it much safer to
+use the previous state.
+**If ur current state update id dependent upon the previous state then it it compulsory to use previous state.
 
+There is a difference while dealing with useState() when we pass the default state as an object.
+Whenever we update the value the object it doesnt merge the new state update with the previous state, instead it overrides it.
+i.e if our object has more than one values inside it and we update only few of them then after rerendering the values, the values which are not updated are vanised from the object.
+And only updated ones stays.
+To avoid this we use spread operator, so we can also add the un-updated values to the updated ones.
+Other way of doing this is that instead of using object and passing it to one useState() hooks for multiple states.
+We can create multiple useState() hooks for multiple states. Hence we avoid the clashing of states.
 
-useState() - It registers the state for a specified component instance.
+It registers the state for a specified component instance.
 i.e. If we have used the component(function) for multiple times, then for each of them this useState function will create a seperate state.
 Hence when each of the components is called it creates a different states for each of them.
 That is the reason why after updating one component the others are not affected because each one has seperate state.
 REACT SCHEDULES STATE UPDATES, IT DOESNT PERFORMS THEM INSTANTLY.
-Using state we can implement 2 way binding which means that for inputs we just dont listen to changes but also pass a new value back to the input. So we can reset or change the values
-We are passing date from child compenent to parent component by passing this data to the function we got from parent class. This is called lifting up of state/data.
-
-
-
-
-
-
-
-
-
+Using state we can implement 2 way binding which means that for inputs we just dont listen to changes but also pass a new value back to the input. 
+So we can reset or change the values
+We are passing data from child compenent to parent component by passing this data to the function we got from parent class. 
+This is called lifting up of state/data.
 
 
 MOVING DATA FROM CHILD COMPONENT TO PARENT COMPONENT --> 
@@ -92,8 +108,13 @@ To avoid using multiple divs / creating div soup we use fragments.
 FRAGMENTS allows us to write neat and clean code.
 
 
+useEffect() --> 
+Syntax :- userEffect(() => {
+               The code written here will execute every time this hook executes.
+          },[this array will contain some variables and this hooks will only execute when the values passed in the array will change]);
 
-You must add all "things" you use in your effect function if those "things" could change because your component (or some parent component) re-rendered.
+This hooks will perfrom some kind of sideeffect when something happens.
+You must add all "things" you use in your effect function,"things" that could change because your component (or some parent component) re-rendered.
 userEffect runs after completion of every components rendering cycle, IF WE DONT PASS THE SECOND ARGUMENT WHICH IS AN ARRAY.
 But if you pass the second argument as an array then the effect function will run for the first time, but not for the subsequent render cycle.
 And if you pass any dependencies in the array then this effect function will run whenever the dependencies is present or valid.
@@ -106,6 +127,9 @@ And if you pass any dependencies in the array then this effect function will run
 
 React hooks can be recongnized by the fact that they start with the word 'use'.
 **React hooks can only be used with functional components. We cannot use them with class components.**
+React hooks must be executed in the same order as they are defined after every single re-render.
+i.e. we cannot use hooks inside any conditional statement, or inside any loops, or inside anything.
+They must be defined at the top level of our function and not be nested/inside anything.
 And all these hooks must be only called inside of react components.
 They can't be called outside of component functions and they also should't called inside a nested functions.
 Basic hooks :--
