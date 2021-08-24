@@ -109,18 +109,20 @@ FRAGMENTS allows us to write neat and clean code.
 
 
 useEffect() --> 
-Syntax :- userEffect(() => {
+Syntax :- useEffect(() => {
                The code written here will execute every time this hook executes.
           },[this array will contain some variables and this hooks will only execute when the values passed in the array will change]);
 
 This hooks will perfrom some kind of sideeffect when something happens.
 You must add all "things" you use in your effect function,"things" that could change because your component (or some parent component) re-rendered.
 userEffect runs after completion of every components rendering cycle, IF WE DONT PASS THE SECOND ARGUMENT WHICH IS AN ARRAY.
-But if you pass the second argument as an array then the effect function will run for the first time, but not for the subsequent render cycle.
+But if you pass the second argument as an array(empty array) then the effect function will run for the first time, but not for the subsequent render cycle.
 And if you pass any dependencies in the array then this effect function will run whenever the dependencies is present or valid.
 
 
-
+useReducer -->
+Syntax :- useReducer();
+It is usally preferred to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous state.
 
 
 
