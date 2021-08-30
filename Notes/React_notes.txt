@@ -121,8 +121,17 @@ And if you pass any dependencies in the array then this effect function will run
 
 
 useReducer -->
-Syntax :- useReducer();
+Syntax :- const [current_state, dispatch] = useReducer(reducer_function, initial_State);
+The reducer_function accepts 2 values and returns 1. The reducer function accepts the current state and returns the new state. 
+Depending on the action the reducer function will perform operations on the current state resulting in the new state.
+Syntax of reducer_function :-  function reducer(current_state, action){
+                                    return new_state
+                               }
+The useReducer hook returns 2 values, one is the current state and the other one is dispatch function. 
+This dispatch function helps us to use a particular action on reducer_function.
 It is usally preferred to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous state.
+useRe̥̥ducer also lets you optimize performance for components that trigger deep updates because you can pass dispatch down instead of callbacks.
+
 
 
 
