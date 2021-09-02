@@ -1,8 +1,10 @@
-import Counter from "./useReducer/Counter";
+// import CounterSimple from "./useReducer/CounterSimple";
+import CounterComplex from "./useReducer/CounterComplex";
 function App() {
   return (
     <div>
-      <Counter />
+      {/* <CounterSimple /> */}
+      <CounterComplex />
     </div>
   );
 }

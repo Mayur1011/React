@@ -57,11 +57,11 @@ props.children contains all the content which is specified between the opening t
 
 States and lisiting to user events helps us to change the content/interact with the page.
 State in React -
-States in the component changes over time. The changes in the state happens over time which can be done by a user or can be a system event.
+States in the component changes over time. The changes in the state can be done by a user or can be a system event.
 A state represents the component's local state or information. We can only modify the state inside that compenent
 
 useState() -->
-Syntax :- const[current_state, stateUpdateFunction] = useState(default_value);
+Syntax :- const[current_state, stateUpdateFunction] = useState(default_value / initial_State);
 We pass useState() a default value to useState() as a parameter.
 Now, there are two ways through which we can pass our default value to useState.
 1. Directly hardcoded values
@@ -71,11 +71,10 @@ Now, there are two ways through which we can pass our default value to useState.
    Eg. useState(() => {here we can pass the default value/function})
    If we pass the default value in this way, the useState will be passed the default value only once i.e. at the very first time when the component is rendered.
 And it returns a array with 2 values [state(currentstate), function_which_allows_us_to_update_the_state].
-The function which is returned by useState() is used to update the state. This function takes a kindof callback function as an parameter.
-And the callback function present in the update function returned by useState() contains previous state as an parameter by which we can 
-update the current state. Remember that we can also directly update the current state without taking/using the previous state but it much safer to
-use the previous state.
-**If ur current state update id dependent upon the previous state then it it compulsory to use previous state.
+The function which is returned by useState() is used to update the state. This function takes a callback function as an parameter.
+And the callback function returned by useState() contains previous state as an parameter by which we can update the current state. 
+Remember that we can also directly update the current state without taking/using the previous state but it much safer to use the previous state.
+**If ur current state update is dependent upon the previous state then it it compulsory to use previous state.
 
 There is a difference while dealing with useState() when we pass the default state as an object.
 Whenever we update the value the object it doesnt merge the new state update with the previous state, instead it overrides it.
@@ -113,11 +112,13 @@ Syntax :- useEffect(() => {
                The code written here will execute every time this hook executes.
           },[this array will contain some variables and this hooks will only execute when the values passed in the array will change]);
 
-This hooks will perfrom some kind of sideeffect when something happens.
+This hooks will perfrom some operations when something/side effect happens.
 You must add all "things" you use in your effect function,"things" that could change because your component (or some parent component) re-rendered.
 userEffect runs after completion of every components rendering cycle, IF WE DONT PASS THE SECOND ARGUMENT WHICH IS AN ARRAY.
 But if you pass the second argument as an array(empty array) then the effect function will run for the first time, but not for the subsequent render cycle.
 And if you pass any dependencies in the array then this effect function will run whenever the dependencies is present or valid.
+Now, suppose your dependencie(s) is/are some properties of an object then we must only pass that properties of that object instead of passing the whole object in dependency array.
+To pass the properties of an object we can use object destructuring or we pass the properties by using dot operator in dependency array.
 
 
 useReducer -->
@@ -127,8 +128,9 @@ Depending on the action the reducer function will perform operations on the curr
 Syntax of reducer_function :-  function reducer(current_state, action){
                                     return new_state
                                }
+The current_state and the action can be normal values or can be object.
 The useReducer hook returns 2 values, one is the current state and the other one is dispatch function. 
-This dispatch function helps us to use a particular action on reducer_function.
+This dispatch function helps us to use a particular action on reducer_function. We pass the action we want to perform as an parameter to dispatch function.
 It is usally preferred to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous state.
 useRe̥̥ducer also lets you optimize performance for components that trigger deep updates because you can pass dispatch down instead of callbacks.
 

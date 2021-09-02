@@ -14,7 +14,7 @@ const reducer = (currState, action) => {
       return currState;
   }
 };
-const Counter = () => {
+const CounterSimple = () => {
   /*
     Here we are handling multiple states.
     1. Incrementing the count.
@@ -55,4 +55,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default CounterSimple;
