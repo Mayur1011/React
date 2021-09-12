@@ -141,6 +141,7 @@ To pass the properties of an object we can use object destructuring or we pass t
 
 useReducer -->
 Syntax :- const [current_state, dispatch] = useReducer(reducer_function, initial_State);
+The initial_State mostly is an object as we deal with more complex states.
 The reducer_function accepts 2 values and returns 1. The reducer function accepts the current state and returns the new state. 
 Depending on the action the reducer function will perform operations on the current state resulting in the new state.
 Syntax of reducer_function :-  function reducer(current_state, action){
@@ -150,8 +151,7 @@ The current_state and the action can be normal values or can be object.
 The useReducer hook returns 2 values, one is the current state and the other one is dispatch function. 
 This dispatch function helps us to use a particular action on reducer_function. We pass the action we want to perform as an parameter to dispatch function.
 It is usally preferred to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous state.
-useRe̥̥ducer also lets you optimize performance for components that trigger deep updates because you can pass dispatch down instead of callbacks.
-
+It allows functional components in React to access reducer functions form your statemanagement.
 
 
 

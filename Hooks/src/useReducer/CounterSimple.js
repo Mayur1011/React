@@ -25,7 +25,7 @@ const CounterSimple = () => {
   // *This dispatch function accepts the action to be performed on the current state.
   const [count, dispatch] = useReducer(reducer, initialState);
   return (
-    <React.Fragment>
+    <>
       <h1>Counter : {count}</h1>
 
       <button
@@ -51,7 +51,7 @@ const CounterSimple = () => {
       >
         Reset
       </button>
-    </React.Fragment>
+    </>
   );
 };
 

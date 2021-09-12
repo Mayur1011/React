@@ -22,7 +22,7 @@ const initialState = {
 // };
 
 const reducer = (state, action) => {
-  // *If we want to increment or decrement the counter by more than 1 value. So we will not increment the counter by default value.
+  // *As we want to increment or decrement the counter by more than 1 value. So we will not set the static incrementer value. We will set it by the value given by action.
   // Suppose we have 2 counters and we have to update only one. But as we update the state of any one counter the value of the other counter get vanished/ gets lost.
   // So to avoid the this we use spread operator and merge the new changes to the old ones and keep the unchanged ones.
   switch (action.type) {
@@ -44,7 +44,7 @@ const reducer = (state, action) => {
 const CounterComplex = () => {
   const [count, dispatch] = useReducer(reducer, initialState);
   return (
-    <div>
+    <>
       <h1>Counter1 : {count.firstCounter}</h1>
       <h1>Counter2 : {count.secondCounter}</h1>
 
@@ -104,7 +104,7 @@ const CounterComplex = () => {
       >
         Reset
       </button>
-    </div>
+    </>
   );
 };
 export default CounterComplex;
