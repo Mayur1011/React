@@ -96,9 +96,8 @@ const Login = (props) => {
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
         <div
-          className={`${classes.control} ${
-            emailState === false ? classes.invalid : ""
-          }`}
+          className={`${classes.control} ${emailState === false ? classes.invalid : ""
+            }`}
         >
           <label htmlFor="email">E-Mail</label>
           <input
@@ -110,9 +109,8 @@ const Login = (props) => {
           />
         </div>
         <div
-          className={`${classes.control} ${
-            passwordState.isValid === false ? classes.invalid : ""
-          }`}
+          className={`${classes.control} ${passwordState.isValid === false ? classes.invalid : ""
+            }`}
         >
           <label htmlFor="password">Password</label>
           <input

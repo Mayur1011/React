@@ -63,6 +63,7 @@ Keys serve as a hint to React but they don’t get passed to your components. If
 Forms :-
 <input type="text">, <textarea> and <select> accepts a value attribute that you can use to implement a controlled component.
 preventDefault is called on the event when submitting the form to prevent a browser reload/refresh.
+We can use useState hook to get the information provided/written in the form by any user at a particular state.
 
 
 
@@ -150,9 +151,16 @@ Syntax of reducer_function :-  function reducer(current_state, action){
 The current_state and the action can be normal values or can be object.
 The useReducer hook returns 2 values, one is the current state and the other one is dispatch function. 
 This dispatch function helps us to use a particular action on reducer_function. We pass the action we want to perform as an parameter to dispatch function.
+We can also pass a second paramter in the dispatch function known as payload which helps us to pass all need variables to the reducer function.
 It is usally preferred to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous state.
 It allows functional components in React to access reducer functions form your statemanagement.
 
+
+In react we have a concept called react context which allows us to manage kind of beind the scenes in react such that we are able to directly change it
+from any component  in out APP and directly pass it to any other componenent in our APP wihout building such a props chain.
+Now, to use context we need to provided which is basically telling react that to component which are wrapperd with this context can use it.
+And while using we need to consume it which means u need to hook it / listen it 
+We can lisiten using AuthContext.Consumer or using a hook (useContext)
 
 
 
