@@ -34,9 +34,12 @@ const Login = (props) => {
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
-    isValid: false,
+    isValid: null,
   });
-  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {});
+  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
+    value: "",
+    isValid: null,
+  });
 
   // alias assignment
   const { isValid: emailIsValid } = emailState;
@@ -96,8 +99,9 @@ const Login = (props) => {
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
         <div
-          className={`${classes.control} ${emailState === false ? classes.invalid : ""
-            }`}
+          className={`${classes.control} ${
+            emailState === false ? classes.invalid : ""
+          }`}
         >
           <label htmlFor="email">E-Mail</label>
           <input
@@ -109,8 +113,9 @@ const Login = (props) => {
           />
         </div>
         <div
-          className={`${classes.control} ${passwordState.isValid === false ? classes.invalid : ""
-            }`}
+          className={`${classes.control} ${
+            passwordState.isValid === false ? classes.invalid : ""
+          }`}
         >
           <label htmlFor="password">Password</label>
           <input

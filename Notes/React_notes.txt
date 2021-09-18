@@ -126,6 +126,8 @@ To avoid using multiple divs / creating div soup we use fragments.
 FRAGMENTS allows us to write neat and clean code.
 
 
+
+
 useEffect() --> 
 Syntax :- useEffect(() => {
                The code written here will execute every time this hook executes.
@@ -138,6 +140,8 @@ But if you pass the second argument as an array(empty array) then the effect fun
 And if you pass any dependencies in the array then this effect function will run whenever the dependencies is present or valid.
 Now, suppose your dependencie(s) is/are some properties of an object then we must only pass that properties of that object instead of passing the whole object in dependency array.
 To pass the properties of an object we can use object destructuring or we pass the properties by using dot operator in dependency array.
+
+
 
 
 useReducer -->
@@ -156,11 +160,30 @@ It is usally preferred to useState when you have complex state logic that involv
 It allows functional components in React to access reducer functions form your statemanagement.
 
 
-In react we have a concept called react context which allows us to manage kind of beind the scenes in react such that we are able to directly change it
-from any component  in out APP and directly pass it to any other componenent in our APP wihout building such a props chain.
-Now, to use context we need to provided which is basically telling react that to component which are wrapperd with this context can use it.
-And while using we need to consume it which means u need to hook it / listen it 
-We can lisiten using AuthContext.Consumer or using a hook (useContext)
+
+
+CONTEXT APIs 
+Good Introduction :- https://medium.com/technofunnel/usecontext-in-react-hooks-aa9a60b8a461
+
+In react we have Context APIs which helps use to create context Objects which allows us to manage the states kindoff behind the scenes in react such that we are able to directly change it
+from any component in our APP and directly pass it to any other componenent in our APP wihout building such a props chain.
+“useContext” hook is used to create common data or a kind of container of common data that can be accessed throughout the component hierarchy without passing the props down manually to each level. 
+Context defined will be available to all the child components without involving “props”.
+Now, to use context we need to have a Provider which is basically telling react that the component which are wrapperd with this context can use this context.
+Eg.. <ObjectName.Provider value={}>
+And while using we need to consume it which means u need to hook it / listen it.
+We can lisiten using ObjectName.Consumer or using a hook (useContext)
+Eg.. <ObjectName.Consumer {(context) => {Here we return the JSX}}> So in the JSX whatever we got through the props is not achieved or can be accessed by context(object) pass in the function.
+Now, using Consumer function whenever we need to use the context is OK. But there is also a hook called useContext which is an alternative to this Consumer function.
+
+useContext() -->
+
+
+
+
+
+
+
 
 
 
