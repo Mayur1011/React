@@ -1,14 +1,13 @@
-// import CounterSimple from "./useReducer/CounterSimple";
-// import CounterComplex from "./useReducer/CounterComplex";
-// import CounterComplexTwo from "./useReducer/CounterComplexTwo";
-import Todo from "./useReducer/Example/Todo";
+// import MainReducer from "./useReducer/MainReducer";
+import MainContext from "./UseContext/MainContext";
+
 function App() {
   return (
     <div>
-      {/* <CounterSimple /> */}
-      {/* <CounterComplex /> */}
-      {/* <CounterComplexTwo /> */}
-      <Todo />
+      {/* *****************************************USE REDUCER ********************************/}
+      {/* <MainReducer></MainReducer> */}
+      {/* *****************************************USE CONTEXT ********************************/}
+      <MainContext></MainContext>
     </div>
   );
 }
