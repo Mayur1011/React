@@ -20,10 +20,13 @@ const CounterSimple = () => {
     1. Incrementing the count.
     2. Decrementing the count.
     3. Reseting the count.
-    This multiple state handling can be done using useReducer. 
+    This multiple state handling can be done using useReducer.
+    Note - This can be done using multiple useStates.(For this ex. 3 useState) 
   */
+
   // *This dispatch function accepts the action to be performed on the current state.
   const [count, dispatch] = useReducer(reducer, initialState);
+
   return (
     <>
       <h1>Counter : {count}</h1>

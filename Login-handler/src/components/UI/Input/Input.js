@@ -7,7 +7,7 @@ const Input = (props) => {
         props.isValid === false ? classes.invalid : ""
       }`}
     >
-      <label htmlFor="email">{props.label}</label>
+      <label htmlFor={props.id}>{props.label}</label>
       <input
         type={props.type}
         id={props.id}
