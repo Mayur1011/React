@@ -215,6 +215,7 @@ If the consumer isn’t wrapped inside the provider, but still tries to access t
 
 The reference in the above syntax is just a variable name.
 This hooks returns a reference. A reference is a object having special property _current_.
+useRef() hook creates a reference.
 
 1. reference.current gives the reference value.
 2. reference.current = newValue; -- This updates the reference value.
@@ -223,6 +224,17 @@ This hooks returns a reference. A reference is a object having special property 
 
 1. The value of the reference is persisted (stays the same) between component re-renderings;
 2. Updating a reference doesn’t trigger a component re-render
+
+**Difference between useRefs and useState.**
+
+1. Updating a reference doesn’t trigger re-rendering, while updating the state makes the component re-render;
+2. The reference update is synchronous (the updated reference value is available right away), while the state update is asynchronous (the state variable is updated after re-rendering).
+
+During initial rendering React still determines what is the output of the component, so there’s no DOM structure created yet. That’s why inputRef.current evaluates to undefined during initial rendering.
+
+That’s why updating a reference (as well as updating state) shouldn’t be performed inside the immediate scope of the component’s function.
+
+The reference must be updated either inside a useEffect() callback or inside handlers (event handlers, timer handlers, etc)
 
 <br></br>
 We cannot use context anywhere because if we context on any thing let say an button then this button can only perform those action mentioned in the context. SO we cannot use this for multiple uses.
@@ -250,6 +262,10 @@ They can't be called outside of component functions and they also should't calle
    Custom React Hooks
 2. We must call the react hooks only at the top level of our function.
 
+**<h2>Some ingeneral notes</h2>**
+The function scope of the functional component should either calculate the output or invoke hooks.
+
+<br/><br/>
 **_SOME GOOD RESOURCES_**
 
 useState vs useref :- https://www.codebeast.dev/usestate-vs-useref-re-render-or-not/#what-causes-re-rendering
