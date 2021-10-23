@@ -137,9 +137,10 @@ _LIMITATION OF JSX_
 
 > <font size ="6">useEffect()</font>
 
-> Syntax :- useEffect(() => {
+> Syntax :- useEffect(callback, [dependencies]);
+> useEffect(() => {
 > The code written here will execute every time this hook executes.
-> },[this array will contain some variables and this hooks will only execute when the values passed in the array will change]);
+> },[this array will contain some values and the hook will only execute when the values passed in the array will change]);
 
 This hooks will perfrom some operations when something/side effect happens.
 You must add all "things" you use in your effect function,"things" that could change because your component (or some parent component) re-rendered.
@@ -149,6 +150,24 @@ And if you pass any dependencies in the array then this effect function will run
 Now, suppose your dependencie(s) is/are some properties of an object then we must only pass that properties of that object instead of passing the whole object in dependency array.
 To pass the properties of an object we can use object destructuring or we pass the properties by using dot operator in dependency array.
 In useEffect function we should always add everything we refer to indside useEffect as a dependency untill there is a good reason not to do that.
+Put your side-effect logic into the callback function, then use the dependencies argument to control when you want the side-effect to run. That’s the sole purpose of useEffect().
+![](React_UseEffect.png)
+
+<h2> Clean Up in useEffect :-</h2>
+If the callback of useEffect(callback, deps) returns a function, then useEffect() considers this as an effect cleanup.Some side-effects need cleanup: close a socket, clear timers.
+
+> Syntax :- ![](React_UseEffect_CleanUP.png)
+
+**Working of CleanUP :-**
+
+1. After initial rendering, useEffect() invokes the callback having the side-effect. cleanup function is not invoked.
+2. On later renderings, before invoking the next side-effect callback, useEffect() invokes the cleanup function from the previous side-effect execution (to clean up everything after the previous side-effect), then runs the current side-effect.
+3. Finally, after unmounting the component, useEffect() invokes the cleanup function from the latest side-effect.
+
+![](React_UseEffect_AfterCleanUP.png)
+
+<br />
+<br />
 
 > <font size="6">useReducer()</font>
 
@@ -231,10 +250,9 @@ useRef() hook creates a reference.
 2. The reference update is synchronous (the updated reference value is available right away), while the state update is asynchronous (the state variable is updated after re-rendering).
 
 During initial rendering React still determines what is the output of the component, so there’s no DOM structure created yet. That’s why inputRef.current evaluates to undefined during initial rendering.
-
 That’s why updating a reference (as well as updating state) shouldn’t be performed inside the immediate scope of the component’s function.
-
 The reference must be updated either inside a useEffect() callback or inside handlers (event handlers, timer handlers, etc)
+References can also access DOM elements. Assign the reference to ref attribute of the element you’d like to access: <html_tag ref={reference}>Element</html_tag> — and the element is available at reference.current
 
 <br></br>
 We cannot use context anywhere because if we context on any thing let say an button then this button can only perform those action mentioned in the context. SO we cannot use this for multiple uses.
@@ -265,7 +283,19 @@ They can't be called outside of component functions and they also should't calle
 **<h2>Some ingeneral notes</h2>**
 The function scope of the functional component should either calculate the output or invoke hooks.
 
+Q. What are SIDE-EFFECTS in React?<br>
+A.
+
+1. Anything that results in changes that can be observed when the calculation is completed, beside the return value of the calculation itself, is a side effect.
+2. Calculation should return just result of the calculation. Anything else is side-effect.
+3. A function is said to have side effect if it trys to modify anything outside its body. For example, if it modidifies a global variable, then it is a side effect. If it makes a network call, it is a side effect as well.
+4. If the functional component makes calculations that don’t target the output value, then these calculations are named side-effects.
+5. It would be a mistake to perform side-effects directly in the body of the component, which is primarily used to compute the output.
+
 <br/><br/>
-**_SOME GOOD RESOURCES_**
+
+<h1>SOME GOOD RESOURCES</h1>
 
 useState vs useref :- https://www.codebeast.dev/usestate-vs-useref-re-render-or-not/#what-causes-re-rendering
+<br>
+Understanding componenet life cycle :- https://www.freecodecamp.org/news/how-to-understand-a-components-lifecycle-methods-in-reactjs-e1a609840630/
