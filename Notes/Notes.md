@@ -1,4 +1,5 @@
-bIt is a client side JS library.
+**<h1>REACT NOTES</h1>**
+It is a client side JS library.
 It creates a VIRTUAL DOM in memory.
 Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, before making the changes in the browser DOM.
 React only changes what needs to be changed.
@@ -17,7 +18,7 @@ Server only sends one HTML page. therafter, React takes over and control the UI.
 Elements are the smallest building block of React apps.
 An element describes what you want to see on the screen.
 
-<!-- In '<div id="root"></div>', the root here is called DOM Node because everything inside it will be managed by React DOM. -->
+In <html_tag id="root"></html_tag>, the root here is called DOM Node because everything inside it will be managed by React DOM.
 
 Therefore we render a React element into a root DOM Node.
 React elements are immutable. i.e. once you create an element you cant change it children or attributes.
@@ -33,7 +34,7 @@ Mostly react is all about combining HTML and JAVASCRIPT together and then we can
 React uses declarative approach which defines the desired target state(s) and let react figure out the actual Javascript DOM instructions.
 And then react figures out which element should be update, delete or displyed on the webpage.
 
-## <br/><br/>
+## <br/>
 
 **JSX - JavaScript XML**
 
