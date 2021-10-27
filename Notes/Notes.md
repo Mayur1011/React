@@ -282,18 +282,20 @@ They can't be called outside of component functions and they also should't calle
 2. We must call the react hooks only at the top level of our function.
 
 **<h2>Some ingeneral notes</h2>**
-The function scope of the functional component should either calculate the output or invoke hooks.
 
-Q. What are SIDE-EFFECTS in React?<br>
-A.
+- The function scope of the functional component should either calculate the output or invoke hooks.
 
-1. Anything that results in changes that can be observed when the calculation is completed, beside the return value of the calculation itself, is a side effect.
-2. Calculation should return just result of the calculation. Anything else is side-effect.
-3. A function is said to have side effect if it trys to modify anything outside its body. For example, if it modidifies a global variable, then it is a side effect. If it makes a network call, it is a side effect as well.
-4. If the functional component makes calculations that don’t target the output value, then these calculations are named side-effects.
-5. It would be a mistake to perform side-effects directly in the body of the component, which is primarily used to compute the output.
+- Q. What are SIDE-EFFECTS in React?<br>
+  A.
 
-<br/><br/>
+  1. Anything that results in changes that can be observed when the calculation is completed, beside the return value of the calculation itself, is a side effect.
+  2. Calculation should return just result of the calculation. Anything else is side-effect.
+  3. A function is said to have side effect if it trys to modify anything outside its body. For example, if it modidifies a global variable, then it is a side effect. If it makes a network call, it is a side effect as well.
+  4. If the functional component makes calculations that don’t target the output value, then these calculations are named side-effects.
+  5. It would be a mistake to perform side-effects directly in the body of the component, which is primarily used to compute the output.
+
+- useReducer + useContext = Redux
+  <br/><br/>
 
 <h1>SOME GOOD RESOURCES</h1>
 
