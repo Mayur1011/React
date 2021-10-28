@@ -1,10 +1,7 @@
 import { React, useState } from "react";
 
 const DataFetchingUseState = (props) => {
-    return (
-        <>
-        </>
-    );
+  return <></>;
 };
 
 export default DataFetchingUseState;

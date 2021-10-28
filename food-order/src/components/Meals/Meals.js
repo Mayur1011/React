@@ -1,5 +1,13 @@
 import React from "react";
-
-const Meals = (props) => {};
+import MealsSummary from "./MealsSummary.js";
+import AvailableMeals from "./AvailableMeals.js";
+const Meals = (props) => {
+  return (
+    <React.Fragment>
+      <MealsSummary />
+      <AvailableMeals />
+    </React.Fragment>
+  );
+};
 
 export default Meals;
