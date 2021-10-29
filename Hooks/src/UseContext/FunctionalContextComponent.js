@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "./MainContext";
+
 export default function FunctionalContextComponent() {
   const darkTheme = useContext(ThemeContext);
+
   const ThemeStyles = {
     backgroundColor: darkTheme ? "#333" : "#CCC",
     color: darkTheme ? "#CCC" : "#333",
