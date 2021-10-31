@@ -5,7 +5,7 @@ import classes from "./Header.module.css";
 const Header = (props) => {
   return (
     <React.Fragment>
-      <Nav></Nav>
+      <Nav onClick={props.onShowCart}></Nav>
       <div className={classes["main-image"]}>
         <img src={meals} alt="Table with food"></img>
       </div>

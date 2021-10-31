@@ -5,7 +5,7 @@ const Nav = (props) => {
   return (
     <header className={classes.header}>
       <h1>My Meals</h1>
-      <NavCartButton />
+      <NavCartButton onClick={props.onClick} />
     </header>
   );
 };
