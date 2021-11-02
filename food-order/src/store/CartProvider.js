@@ -8,16 +8,16 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     /* If the item is already taken once and we want to take similar more items, then instead of adding
-    the item again as a different values we can just add the amount of the item. */
-    const existingCartItemsIndex = state.items.findIndex((item) => {
-      return item.id === action.item.id;
-    });
+    the item again as a different values we can just increase the amount and count of the item. */
+    const existingCartItemsIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
 
     const existingCartItem = state.items[existingCartItemsIndex];
 
     let updatedItems;
 
-    if (existingCartItemsIndex) {
+    if (existingCartItem) {
       const updatedItem = {
         ...existingCartItem,
         amount: existingCartItem.amount + action.item.amount,
@@ -34,11 +34,13 @@ const cartReducer = (state, action) => {
 
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
+
     // Return a newly updated state
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
     };
+  } else if (action.type === "REMOVE") {
   }
   return defaultCartState;
 };
