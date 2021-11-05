@@ -1,14 +1,18 @@
-// import MainReducer from "./useReducer/MainReducer";
-import MainContext from "./UseContext/MainContext";
+// import MainReducer from "./UseReducer/MainReducer";
+// import MainContext from "./UseContext/MainContext";
+import MainState from "./UseState/MainState";
 
 function App() {
   return (
     <div>
       {/* *****************************************USE REDUCER ********************************/}
-      {/* <MainReducer></MainReducer> */}
+      {/* <MainReducer /> */}
 
       {/* *****************************************USE CONTEXT ********************************/}
-      <MainContext></MainContext>
+      {/* <MainContext /> */}
+
+      {/* *****************************************USE STATE ********************************/}
+      <MainState />
     </div>
   );
 }

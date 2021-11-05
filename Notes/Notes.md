@@ -85,6 +85,13 @@ _State in React_-
 States in the component changes over time. The changes in the state can be done by a user or can be a system event.
 A state represents the component's local state or information. We can only modify the state inside that compenent
 
+**React Optimization**
+We use React.memo to wrap a component from preventing unnecessary re-rendering. Before re-rendering, we just check the props and compare it to previous props if thier are any changes in props then only we will re-render the current component(component which is wrapped with React.memo).
+JavaScript has 2 types of data type, **primitive and reference**.
+React.memo can be used only for primitive data types.
+
+For reference datatypes like arrays, functions and object we use a hook known ass useCallback()
+
 > <font size ="6">useState()</font>
 
 > Syntax :- const[current_state, stateUpdateFunction] = useState(default_value / initial_State);
@@ -267,12 +274,22 @@ They must be defined at the top level of our function and not be nested/inside a
 And all these hooks must be only called inside of react components.
 They can't be called outside of component functions and they also should't called inside a nested functions.
 
+> <font size="6">useCallback()</font>
+
+> Syntax --> useCallback(argument1,argument2)
+>
+> argument1 : function which we store in back
+> argument2 : dependencies
+
+Here React store/save the function somewhere in the backend and for each re-rendering, React use this function instead of creating a new one for each new state because the function never changes
+
 **Basic hooks :--**
 
 1.  useState()
 2.  useEffect()
 3.  useReducer() : Replacement to useState(). For more complex and powerful state management
 4.  useContext() : Used to pass the data to the child components without using props.
+5.  useCallback() : Used for React Optimization
 
 **RULES OF HOOKS :-**
 
