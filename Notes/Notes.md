@@ -336,6 +336,24 @@ Here React store/save the function somewhere in the backend and for each re-rend
 What is Redux?
 
 Redux is a state management system from cross-componenet and app-wide state.
+<br>
+Redux is an alternative to context-api (useContext).
+
+<h2>BUT WHY DO WE NEED REDUX IF WE HAVE useContext?</h2>
+In high level application react context leads to deeply nested JSX code with many context providers.
+Ans also React context is not optimized for high frequency state changes.
+<br>
+<br>
+Redux is all about have a central data store where all you state is been stored.
+Compoents which use the central data store subscribes to that store and gets notify whenever any changes happen in the store.
+    
+     Important! - Component never directly manipulate the data in the store.
+
+So to change the data we have to build a reducer which changes the data of the store. This reducer function is not useReducer(). These are just general function that return some values.
+
+Now components perform some action / triggers something and then redux forwards these actions to the reducer function. And now reducer reads the action and perform it.
+
+<br>
 
 > <font size="6">Class Based Components</font>
 
