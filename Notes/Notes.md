@@ -69,6 +69,10 @@ Keys serve as a hint to React but they don’t get passed to your components. If
 
 input type="text", textarea and select these tags accepts a value attribute that you can use to implement a controlled component.
 
+Form Validation
+
+> Ways for form validation :- ![](Form-validation.png)
+
 **preventDefault is called on the event when submitting the form to prevent a browser reload/refresh.**
 
 **Event Handler for react :-**
@@ -78,13 +82,6 @@ input type="text", textarea and select these tags accepts a value attribute that
 2. We can define a function and then call that function.
    Eg. **<button onClick={call the function (write the name of the function. Dont invoke the function)}>Click</button>**
 
-**States**
-
-States and lisiting to user events helps us to change the content/interact with the page.
-_State in React_-
-States in the component changes over time. The changes in the state can be done by a user or can be a system event.
-A state represents the component's local state or information. We can only modify the state inside that compenent
-
 **React Optimization**
 We use React.memo to wrap a component from preventing unnecessary re-rendering. Before re-rendering, we just check the props and compare it to previous props if thier are any changes in props then only we will re-render the current component(component which is wrapped with React.memo).
 JavaScript has 2 types of data type, **primitive and reference**.
@@ -92,13 +89,38 @@ React.memo can be used only for primitive data types.
 
 For reference datatypes like arrays, functions and object we use a hook known ass useCallback()
 
+**MOVING DATA FROM CHILD COMPONENT TO PARENT COMPONENT**
+
+We can do this by using props and get a function from parent compenent into child component and then passing the date into that component.
+
+**Working with FRAGMENTS, PORTALS, REFS**
+
+_LIMITATION OF JSX_
+
+1.  We cannot render 2 JSX elements next to each other. i.e. we cannot return more than one root JSX elements from the return statement.
+2.  To avoid using multiple divs / creating div soup we use fragments.
+    FRAGMENTS allows us to write neat and clean code.
+
+> <font size="8" color="yellow">States </font> <font size="3" color="white">important concept in React </font>
+
+States and lisiting to user events helps us to change the content/interact with the page.
+_State in React_-
+States in the component changes over time. The changes in the state can be done by a user or can be a system event.
+A state represents the component's local state or information. We can only modify the state inside that compenent.<br> We can classify state into 3 categories.
+
+1.  Local state
+1.  Cross-compenent state
+1.  App-wide state
+
+![](classificationofstates.png)
+
 > <font size ="6">useState()</font>
 
 > Syntax :- const[current_state, stateUpdateFunction] = useState(default_value / initial_State);
 
 We pass useState() a default value to useState() as a parameter.
 Now, there are two ways through which we can pass our default value to useState.
-We can use useState hook to get the information provided/written in the form by any user at a particular state.
+React overides the previous state values with the new state values which is oppsite of class components .
 
 1. Directly hardcoded values
    Eg. useState(4)
@@ -131,17 +153,28 @@ So we can reset or change the values
 We are passing data from child compenent to parent component by passing this data to the function we got from parent class.
 This is called lifting up of state/data.
 
-**MOVING DATA FROM CHILD COMPONENT TO PARENT COMPONENT**
+We can use useState hook to get the information provided/written in the form by any user at a particular state.
 
-We can do this by using props and get a function from parent compenent into child component and then passing the date into that component.
+Even when we use useState inside the function, we call the useState every time the app function runs again. we dont seem to lose or reinitialize the state every time.
+Reason for this is :- useState is coming from react, and react manages the state and manages the connections with component for you. And here react ensures that the value you passes as a default value to the useState essentially considered once, the first time ever the component is rendered.
+Basically at the intiall rendering, react stores a kindoff state variable associated with the component and for further rendering, we react doesnt create a new state and sees that there is a state variable already associated with this component and simply updates the state as needed.
 
-**Working with FRAGMENTS, PORTALS, REFS**
+How react does state updates?
+Whenever we update a state using a state update function, it doesnt mean that we are immediately updating the state with new value. Instead <font color="lightgreen">react schedules this state update / state change</font>.
 
-_LIMITATION OF JSX_
+**The new values are updated after the component is re-rendered.**
 
-1.  We cannot render 2 JSX elements next to each other. i.e. we cannot return more than one root JSX elements from the return statement.
-2.  To avoid using multiple divs / creating div soup we use fragments.
-    FRAGMENTS allows us to write neat and clean code.
+The reason that using a previous state for updating the current state is good practice is that there may be a moment when there are multiple state updates schedules, and react updates the states in a sequential order based on how they were called. So to correctly update the previous state we must need that state.
+
+If we write more than one state update function in a synchronous block of code such that there is nothing which creates a time delay between these state updating functions, react batches these state updates together into one state updates.
+
+Example :- function (){
+stateUpdatefunction1;
+stateUpdateFunction2;
+....
+}
+
+React will batch this state update function together, even if these are different state update function.
 
 > <font size ="6">useEffect()</font>
 
@@ -298,12 +331,33 @@ Here React store/save the function somewhere in the backend and for each re-rend
    Custom React Hooks
 2. We must call the react hooks only at the top level of our function.
 
+> <font size="6">REDUX</font>
+
+What is Redux?
+
+Redux is a state management system from cross-componenet and app-wide state.
+
+> <font size="6">Class Based Components</font>
+
+In class based components, we use render() method to render the JSX code on to the browser.
+
+In class components we cannot take props as parameters, instead we use a {Component} which is builtin with React and can be imported. We extend our class with this Component class and then with the help of 'this' keyword we can get the props.
+
+In class components we initialize anything like variables, states in the constructor.
+
+In class components a state is always an object. States are flexible in function based components.
+
+Syntax to define a state :- this.state = { stateVariable1, stateVariable2, ...}. This should be inside a constructor. All the state is written in this this.state.
+
+To update the state we call a special method called this.setState(). this.setState() also take in an object where we update this state defined in 'this.state'. If we defined more than one state in this.state. Even after updating react doesn't override the other state variables but just merge the new changes i.e only changes the state which was changed.
+
+<br>
+
 **<h2>Some ingeneral notes</h2>**
 
 - The function scope of the functional component should either calculate the output or invoke hooks.
 
 - Q. What are SIDE-EFFECTS in React?<br>
-  A.
 
   1. Anything that results in changes that can be observed when the calculation is completed, beside the return value of the calculation itself, is a side effect.
   2. Calculation should return just result of the calculation. Anything else is side-effect.
