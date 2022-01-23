@@ -185,7 +185,7 @@ React will batch this state update function together, even if these are differen
 
 This hooks will perfrom some operations when something/side effect happens.
 You must add all "things" you use in your effect function,"things" that could change because your component (or some parent component) re-rendered.
-userEffect runs after completion of every components rendering cycle, IF WE DONT PASS THE SECOND ARGUMENT WHICH IS AN ARRAY.
+useEffect runs after completion of every components rendering cycle, IF WE DONT PASS THE SECOND ARGUMENT WHICH IS AN ARRAY.
 But if you pass the second argument as an array(empty array) then the effect function will run for the first time, but not for the subsequent render cycle.
 And if you pass any dependencies in the array then this effect function will run whenever the dependencies is present or valid.
 Now, suppose your dependencie(s) is/are some properties of an object then we must only pass that properties of that object instead of passing the whole object in dependency array.
@@ -352,6 +352,19 @@ Compoents which use the central data store subscribes to that store and gets not
 So to change the data we have to build a reducer which changes the data of the store. This reducer function is not useReducer(). These are just general function that return some values.
 
 Now components perform some action / triggers something and then redux forwards these actions to the reducer function. And now reducer reads the action and perform it.
+
+We use useSelector , useDispatch hook to use React store in our functional components.
+But in class based components we dont have hooks so we use function called [connect] which will connect class based components to redux.
+
+As we return a brand new instance of state from the reducer, react doesnt merget that state with the existing state instead it overriders the existing state.
+And is it always recommended (indeed its compulsary) to override the existing state by returning a brand new state object.
+
+<font size="5" color="red">Important</font>
+
+    Remember one thing while returning a brand new state object we override the existing state and react completely override the existing state i.e. it doesnt keep the previous state values.
+    Therfore. if we changed only some data of the state and keep the remaining unchanged, we have 2 mention all the data/properties of the state while returning a brand new state object (as show in index.js file present in store folder of React_Redux).
+
+    Another method is to use object destructuring using spread operator [...] by this we can extract all the properties from the previous state and then update the required values and return a new state object (as show in index.js file present in store folder of React_Redux).
 
 <br>
 
